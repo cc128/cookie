@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//添加Cookie
+			function setCookie(name,value,time){
+				var date = new Date();
+				date.setDate(date.getDate()+time);
+				document.cookie=name+'='+value+';expires='+date;
+			};
+//			setCookie('userName','chao',3);
+//			alert(document.cookie);
+			//获取Cookie的值
+			function getCookie(name){
+				var arr = document.cookie.split('; ');//以；和空格分割字符串
+				for(var i=0;i<arr.length;i++){
+					var arr2=arr[i].split('='); //以等号分割字符串
+					if(arr2[0]==name){
+						return arr2[1];
+					};
+				};
+				return '';
+			};
+//			getCookie('userName')
+//			alert(getCookie('userName'));
+			//删除Cookie
+			function removerCookie(name){
+				setCookie(name, '1',-1);
+			}
+//			alert(getCookie('userName'))
+//			removerCookie('userName')
+//			alert(getCookie('userName'));
+			
+		</script>
+		
+	</body>
+</html>

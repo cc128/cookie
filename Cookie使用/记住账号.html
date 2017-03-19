@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		账号：<input type="text" name="user"/><br />
+		密码：<input type="password" name="pswd"/><br />
+		<button>登录</button>
+		<a href="javascript:;">清除账号信息</a>
+		<script type="text/javascript">
+			window.onload=function(){
+				var userName = document.getElementsByName('user')[0];
+				userName.value=getCookie('user')//取Cookie值放在inout里
+				console.log(getCookie('user'))
+				var Button = document.getElementsByTagName('button')[0];
+				var Abutton = document.getElementsByTagName('a')[0]
+				Button.onclick=function(){
+					if(userName.value==''){
+						
+					}else{
+						setCookie('user',userName.value,1);
+					};
+					    alert(document.cookie);
+	//				var pswd =document.getElementsByName('pswd')[0].value
+				};
+				Abutton.onclick=function (){
+					removerCookie('user');
+					userName.value='';
+				}
+			}
+
+			function setCookie(name,value,time){
+				var date = new Date();
+				date.setDate(date.getDate()+time);
+				document.cookie=name+'='+value+';expires='+date;
+			};
+			function getCookie(name){
+				var arr = document.cookie.split('; ');//以；和空格分割字符串
+				for(var i=0;i<arr.length;i++){
+					var arr2=arr[i].split('='); //以等号分割字符串
+					if(arr2[0]==name){
+						return arr2[1];
+					};
+				};
+				return '';
+			};
+			function removerCookie(name){
+				setCookie(name, '1',-1);
+			}
+		</script>
+	</body>
+</html>
